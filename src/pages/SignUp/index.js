@@ -1,28 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, Text } from "react";
 import { Link } from "react-router-dom";
 
-//import Logo from "../../assets/airbnb-logo.svg";
-
+ 
 import { Form, Container } from "./styles";
+
+import Logo from '../../assets/Logo3.png'
 
 class SignUp extends Component {
   state = {
     github_user: "",
     password: "",
+    confirmPassword: "",
     
-  };
-
-  handleSignUp = e => {
-    e.preventDefault();
-    alert("Eu vou te registrar");
   };
 
   render() {
     return (
       <Container>
-        <Form onSubmit={this.handleSignUp}>
-          
-          
+        
+        <Form >        
+        <img src={Logo}/>
+        <h1>Novo Dev</h1>    
           <input
             type="text"
             placeholder="Usuário no Github"
@@ -33,8 +31,14 @@ class SignUp extends Component {
             placeholder="Crie uma Senha Secreta"
             onChange={e => this.setState({ password: e.target.value })}
           />
+          <input
+            type="password"
+            placeholder="Confirme sua Senha Secreta"
+            onChange={e => this.setState({ confirmPassword: e.target.value })}
+          />
           <button type="submit">Cadastrar</button>
-          <hr />
+        <hr />
+          <p className="cadasatrado"> Já se cadastrou? </p>
           <Link to="/">Fazer login</Link>
         </Form>
       </Container>

@@ -1,8 +1,15 @@
 import React from 'react'
 
 import SignUp from './pages/SignUp'
+import LoginPage from './pages/Login'
+import Main from './pages/Main'
 
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
+
+import history from './history'
+import {BrowserRouter, 
+        Route, 
+        Switch, 
+        Redirect} from "react-router-dom"
 
 import {isAuthenticaded} from './services/auth'
 
@@ -13,22 +20,21 @@ const PrivateRoute = ({component: Component, ...rest}) => (
   isAuthenticaded() ? (
     <Component {...props} />
   ) : (
-    <Redirect to={{pathname: '/', state: {from: props.location}}} />
+    <Redirect to={{pathname: '/login', state: {from: props.location}}} />
   )
-
 }
 />
 )
 
 const Routes = () => (
-  <BrowserRouter>
+  <BrowserRouter history={history}>
     <Switch>
-        <Route exact path='/' component={() => <h1>Login</h1>} />
+        <Route exact path='/login' component={() => <LoginPage/> }/>
         <Route exact path="/signup" component={() => <SignUp/>} />
-        <PrivateRoute path="/app" component={() => <h1>APP</h1>} />
+        <PrivateRoute path="/" component={() => <Main/>} />
         <Route path='*' component={() => <h1>404 - Page Not Found</h1>} />
     </Switch>
-  </BrowserRouter>
+    </BrowserRouter>
 )
 
 export default Routes;

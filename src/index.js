@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import 'dotenv/config'
+import React from 'react'
+
 import ReactDOM from 'react-dom';
 
-import Routes from './routes'
-
-import App from './App';
+import App from './App'
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
